@@ -1,0 +1,42 @@
+<view class="home_dynmic">
+    <view class="dynmic_title">
+        <image src="../../resource/focus.png" />
+        <text>每日学诗</text>
+    </view>
+    <view class="none_data" wx:if="{{test_list.length === 0}}">暂无数据</view>
+    <block wx:if="{{test_list.length > 0}}">
+        <view class="dynmic_content" wx:for="{{test_list}}" data-id="{{item.id}}" wx:key="index">
+            <view class="dynmic_content_view">
+                <text class="test_title">{{index + 1}}.{{item.test_title}}</text>
+            </view>
+            <radio-group style="width: 100%" bindchange="radioChange">
+                <label class="weui-cell weui-check__label" class="test_select" wx:if="{{item.select.A.length !== 0}}">
+                    <view class="weui-cell__hd" style="width: 40px;">
+                        <radio value="{{item.test_id + ',' + 'A'}}" data-id="{{item.test_id}}"/>
+                    </view>
+                    <view class="weui-cell__bd">{{item.select.A}}</view>
+                </label>
+                <label class="weui-cell weui-check__label" class="test_select" wx:if="{{item.select.B.length !== 0}}">
+                    <view class="weui-cell__hd" style="width: 40px;">
+                        <radio value="{{item.test_id + ',' + 'B'}}" data-id="{{item.test_id}}"/>
+                    </view>
+                    <view class="weui-cell__bd">{{item.select.B}}</view>
+                </label>
+                <label class="weui-cell weui-check__label" class="test_select" wx:if="{{item.select.C.length !== 0}}">
+                    <view class="weui-cell__hd" style="width: 40px;">
+                        <radio value="{{item.test_id + ',' + 'C'}}" data-id="{{item.test_id}}"/>
+                    </view>
+                    <view class="weui-cell__bd">{{item.select.C}}</view>
+                </label>
+                <label class="weui-cell weui-check__label" class="test_select" wx:if="{{item.select.D.length !== 0}}">
+                    <view class="weui-cell__hd" style="width: 40px;">
+                        <radio value="{{item.test_id + ',' + 'D'}}" />
+                    </view>
+                    <view class="weui-cell__bd" >{{item.select.D}}</view>
+                </label>
+            </radio-group>
+            <text style="color: {{item.test === 0 ? 'red' : 'black'}}">{{item.test === 0 ? '答错了，答案是' + item.result : (item.test !== 2 ? '恭喜你答对了！' : "")}}</text>
+        </view>
+    </block>
+</view>
+<button type="primary" bindtap="submit">批改</button>

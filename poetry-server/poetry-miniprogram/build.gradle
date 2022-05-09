@@ -1,0 +1,17 @@
+archivesBaseName = 'poetry-miniprogram'
+jar.enabled = true
+bootJar.enabled = true
+
+group 'com.poetry'
+version '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(':poetry-common')
+    implementation project(':poetry-db')
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+}
+
+test {
+    useJUnitPlatform()
+}

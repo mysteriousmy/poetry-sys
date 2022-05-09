@@ -1,0 +1,16 @@
+archivesBaseName = 'poetry-common'
+jar.enabled = true
+bootJar.enabled = true
+
+group 'com.poetry'
+version '0.0.1-SNAPSHOT'
+
+
+dependencies {
+
+
+}
+//
+//test {
+//    useJUnitPlatform()
+//}

@@ -1,0 +1,20 @@
+<!--pages/rhesis/detail/rhesisDetail.wxml-->
+<view class="container">
+    <view class="rhesis" style="background-image: url('{{rhesis.rhesisBackground}}');">
+        <view style="position:absolute; width: 90%;height: 400px; z-index: 1; background: rgba(0, 0, 0, 0.2)"></view>
+        <block wx:for="{{rhesis_list}}" wx:key="index">
+            <text style="z-index: 9; color: white;">{{item}}</text>
+        </block>
+        <text style="z-index: 9; color: white;font-size: 17px;"> —— {{rhesis.poems.poets.poetsName}} 《{{rhesis.poems.poemTitle}}》</text>
+    </view>
+    <view style="width: 90%; margin-top: 20px" data-id="{{rhesis.poems.poemId}}" bindtap="gotoPoemPage">
+        <view style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; font-size: 17px; font-weight: 600;">
+            <text>{{rhesis.poems.poemTitle}}</text>
+            <text>[{{rhesis.poems.poets.dynasty.dynastyName}}] {{rhesis.poems.poets.poetsName}}</text>
+        </view>
+        <text class="poem_content">{{rhesis.poems.poemContent}}</text>
+    </view>
+</view>
+<button type="primary" wx:if="{{!isCollect && isLogin}}" bindtap="doCollect">收藏</button>
+<button type="warn" wx:if="{{isCollect && isLogin}}" bindtap="doCollect">取消收藏</button>
+<button type="primary" wx:if="{{!isLogin}}" bindtap="gotoLogin">登录后可以收藏哦</button>

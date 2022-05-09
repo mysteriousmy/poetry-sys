@@ -1,0 +1,30 @@
+spring:
+  mail:
+    protocol: smtp
+    host: smtp.qq.com
+    port: 587
+    username:
+    password:
+    default-encoding: UTF-8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/poetry_sys?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345678
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      additional-paths: poetry-admin/**,poetry-common/**,poetry-db/**,poetry-miniprogram/**
+server:
+  port: 8081

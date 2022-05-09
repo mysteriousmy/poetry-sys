@@ -1,0 +1,33 @@
+<!--pages/detail/detail.wxml-->
+<view class="head">
+    <view class="head_img" wx:if="{{poet.image.length !== 0}}">
+        <image src="{{poet.poetsPhoto}}" mode="aspectFill" />
+    </view>
+</view>
+<view class="title">
+    <text style="font-weight: 900; font-size: 25px; text-align: center;">{{poet.poetsName}}</text>
+    <text style="text-align: center;">{{poet.dynasty.dynastyName}}诗人 </text>
+</view>
+<view class="uni_content">
+    <view class="uni_content_title">
+      <image src="/resource/desc.png" />
+      <text>诗人简介</text>
+    </view>
+    <view class="none_data" wx:if="{{poet.poetsDesc.length === 0}}">暂无数据</view>
+    <text style="margin-top:20px;text-indent: 2em;">{{poet.poetsDesc}}</text>
+</view>
+<view class="uni_content">
+    <view class="uni_content_title">
+      <image src="/resource/poemList.png" />
+      <text>收录作品表（{{poet.poems.length}}首）</text>
+    </view>
+    <view class="none_data" wx:if="{{poet.poems.length === 0}}">暂无数据</view>
+    <block wx:if="{{poet.poems.length !== 0}}">
+        <view class="poems" wx:for="{{poet.poems}}" wx:key="index" data-id="{{item.poemId}}" bindtap="goToPoemPage">
+            <view style="display: flex;flex-direction: row; justify-content: space-between;"> 
+                <text>{{item.poemTitle}}</text>
+            </view>
+            <text class="poem_content">{{item.poemContent}}</text>
+        </view>
+    </block>
+</view>

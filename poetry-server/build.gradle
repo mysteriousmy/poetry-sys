@@ -1,0 +1,64 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
+    id 'java'
+}
+
+group = 'com.poetry'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+
+/* 引入子模块 */
+subprojects {
+    /* 使用二进制插件 */
+    apply plugin: 'java' /* java是Gradle的核心插件，是内置的，内置插件不需要配置依赖路径 */
+    apply plugin: 'idea' /* 同上  让Gradle自动生成Intellij的项目文件*/
+    /* 注意gradle插件不再自动应用，所以这里需要指定 */
+
+    apply plugin: 'org.springframework.boot'
+    /* 依赖管理插件仍然是一个spring-boot-gradle-plugin传递依赖，所以无需在build.gradle配置中明确列出此依赖。 */
+    apply plugin: 'io.spring.dependency-management' /* 依赖管理，用来传递spring的依赖 */
+
+    group = 'com.pay'
+    version = '0.0.1' /* 项目版本 */
+    /* 指定jdk版本 */
+    sourceCompatibility = '17'
+    /* java编译的时候缺省状态下会因为中文字符而失败 */
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+    repositories {
+        mavenLocal()
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+
+    /* 添加通用依赖 */
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation group: 'com.alibaba', name: 'fastjson', version: '2.0.1'
+        compileOnly 'org.projectlombok:lombok'
+        implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+        implementation group: 'com.auth0', name: 'java-jwt', version: '3.19.1'
+        annotationProcessor 'org.projectlombok:lombok'
+        implementation 'org.springframework.boot:spring-boot-devtools'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.6.7'
+        implementation group: 'cn.hutool', name: 'hutool-all', version: '5.7.22'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.6.7'
+
+
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

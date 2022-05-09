@@ -1,0 +1,50 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/sort/sort",
+        "pages/mypage/mypage",
+        "pages/detail/detail",
+        "pages/myCollect/myCollect",
+        "pages/poem/index/poemIndex",
+        "pages/poem/list/poemList",
+        "pages/poets/list/poetList",
+        "pages/poets/detail/poetDetail",
+        "pages/rhesis/detail/rhesisDetail",
+        "pages/rhesis/hot/hotRhesis",
+        "pages/learn/learn",
+        "pages/history/history"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "诗词小助手",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#a9b7b7",
+        "selectedColor": "1296db",
+        "borderStyle": "white",
+        "list": [
+            {
+                "selectedIconPath": "resource/home_select.png",
+                "iconPath": "resource/home.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "resource/search_na_color.png",
+                "iconPath": "resource/search_single.png",
+                "pagePath": "pages/sort/sort",
+                "text": "搜索"
+            },
+            {
+                "selectedIconPath": "resource/user_select.png",
+                "iconPath": "resource/user.png",
+                "pagePath": "pages/mypage/mypage",
+                "text": "我的"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

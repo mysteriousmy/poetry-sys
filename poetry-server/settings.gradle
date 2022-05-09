@@ -1,0 +1,8 @@
+rootProject.name = 'poetry-server'
+include 'poetry-admin'
+include 'poetry-miniprogram'
+include 'poetry-common'
+include 'poetry-db'
+include 'poetry-admin'
+include 'poetry-miniprogram'
+
