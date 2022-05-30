@@ -1,0 +1,88 @@
+/* pages/poets/list/poetList.wxss */
+.home_tool {
+    background-color: #ffffff;
+    border-radius: 6px;
+    margin: 0 auto;
+    width: 90%;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    /*设置图片和文字垂直居中对齐*/
+    display: flex;
+    white-space:nowrap;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    
+}
+.tool {
+    width: 50px!important;
+    height: 80px;
+    margin-left: 20px;
+    border-radius: 10px;
+    text-align: center;
+    writing-mode:vertical-lr;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.tool text{
+    width: auto;
+
+    color: white;
+    margin: 0 auto;
+}
+.uni_content {
+    background-color: #ffffff;
+    border-radius: 6px;
+    width: 81%;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    display: flex;
+    padding: 20px;
+    padding-bottom: 30px;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.uni_content_title {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+.uni_content_title image {
+    width: 35px;
+    height: 35px;
+    display: inline;
+
+    margin-right: 5px;
+}
+.poems{
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+}
+.poem_content{
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    margin-top: 20px;
+}
+.none_data {
+    text-align: center;
+    height: 40px;
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.3);
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;
+    top: 40%;
+}

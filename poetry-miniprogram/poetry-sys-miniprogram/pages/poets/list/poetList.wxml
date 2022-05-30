@@ -1,0 +1,29 @@
+<scroll-view scroll-x class="home_tool" style="padding-top: 20px;">
+    <view style="background: black" class="tool" data-type="0" bindtap="changeDynasty" data-id="-1">
+        <text>全部</text>
+    </view>
+    <block wx:for="{{poets_dynasty}}" wx:key="index">
+        <view style="background: {{item.color}}; {{index === poets_dynasty.length-1 ? 'margin-right: 20px' : ''}}" class="tool" bindtap="changeDynasty" data-id="{{item.id}}" data-name="{{item.dynasty_name}}">
+            <text>{{item.dynasty_name}}</text>
+        </view>
+    </block>
+</scroll-view>
+
+<view class="uni_content">
+    <view class="uni_content_title">
+        <image src="/resource/search.png" />
+        <text style="color: rgba(0,0,0,0.7);">{{current_dynasty}} 诗人 / 总共{{poets_list.length}}名</text>
+    </view>
+    <view class="none_data" wx:if="{{poets_list.length === 0}}">暂无数据</view>
+    <block wx:if="{{poets_list.length !== 0}}">
+        <view class="poetss" wx:for="{{poets_list}}" wx:key="index">
+            <view class="dynmic_content" data-id="{{item.poetsId}}" wx:key="index" bindtap="goToDetailPage">
+                <image src="{{item.poetsPhoto}}" mode="aspectFill"></image>
+                <view>
+                    <text>{{item.poetsName}} [{{item.dynasty.dynastyName}}]</text>
+                    <text>{{item.poetsDesc}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

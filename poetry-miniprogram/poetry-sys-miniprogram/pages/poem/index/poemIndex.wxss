@@ -1,0 +1,78 @@
+/* pages/poem/index/poemIndex.wxss */
+.title{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+.author{
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 200;
+    text-align: center;
+}
+.home_tool {
+    background-color: #ffffff;
+    border-radius: 6px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    /*设置图片和文字垂直居中对齐*/
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.long{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    text-indent: 1em;
+    text-align: left!important;
+}
+.tool {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tool image {
+    width: 60px;
+    height: 60px;
+    display: inline;
+}
+.container_text{
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    width: 90%;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.container_text>text:nth-child(1){
+    margin-top: 40px;
+}
+.tool text {
+    width: 80px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    
+    margin-bottom: 40px;
+}
+.content text{
+    font-size: 17px;
+    margin-top: 10px;
+    text-align: center;
+}

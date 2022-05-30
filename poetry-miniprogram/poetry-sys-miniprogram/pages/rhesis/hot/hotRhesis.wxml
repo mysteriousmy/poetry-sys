@@ -1,0 +1,16 @@
+<view class="home_dynmic">
+    <view class="dynmic_title">
+      <image src="/resource/热门.png" />
+      <text>名句名言列表</text>
+    </view>
+    <view class="none_data" wx:if="{{rhesis_list.length === 0}}">暂无数据</view>
+    <block wx:if="{{rhesis_list.length > 0}}">
+      <view class="dynmic_content" wx:for="{{rhesis_list}}" data-id="{{item.rhesisId}}" wx:key="index" bindtap="goToDetailPage">
+        <image src="{{item.rhesisBackground}}" mode="aspectFill" />
+        <view>
+          <text class="rhesis_title">{{item.rhesisContent}}</text>
+          <text class="rhesis_desc">出自<text style="color:#1296db;cursor: pointer;">《{{item.poems.poemTitle}}》</text></text>
+        </view>
+      </view>
+    </block>
+  </view>

@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<scroll-view>
+  <view class="banner">
+    <swiper indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" circular="{{banner.circular}}" vertical="{{banner.vertical}}" interval="{{banner.interval}}" duration="{{banner.duration}}" previous-margin="{{banner.previousMargin}}px" next-margin="{{banner.nextMargin}}px" style="height: 200px;">
+      <block wx:for='{{banner_list}}' wx:key='index'>
+        <swiper-item>
+          <view class="banner_cover" data-id="{{item.id}}" bindtap="gotoRhesisPage">
+            <text style="top: 30%;">每日名言：</text>
+            <text>{{item.banner_title}}</text>
+          </view>
+          <image src='{{item.banner_url}}' mode='aspectFill' class='banner-item-images' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="home_tool" style="padding-top: 20px;">
+    <view class="tool" data-type="0" bindtap="toPoemListPage">
+      <image src="../../resource/poems.png" />
+      <text>诗词文言</text>
+    </view>
+    <view data-type="2" class="tool" bindtap="toPoetsListPage">
+      <image src="../../resource/poets.png" />
+      <text>历朝诗人</text>
+    </view>
+
+    <view  data-type="3" class="tool" bindtap="toHotRhesisPage">
+      <image src="../../resource/热门.png" />
+      <text>名句名言</text>
+    </view>
+  </view>
+  <view class="home_dynmic">
+    <view class="dynmic_title">
+      <image src="../../resource/poemList.png" />
+      <text>推荐文集选</text>
+    </view>
+    <view class="none_data" wx:if="{{poem_list.length === 0}}">暂无数据</view>
+    <block wx:if="{{poem_list.length > 0}}">
+      <view class="dynmic_content" wx:for="{{poem_list}}" data-id="{{item.id}}" wx:key="index" bindtap="goToDetailPage">
+        <image src="{{item.poem_url}}" mode="aspectFill" />
+        <view>
+          <text>{{item.poem_title}}</text>
+          <text>{{item.poem_desc}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

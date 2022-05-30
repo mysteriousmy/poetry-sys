@@ -1,0 +1,65 @@
+<!--pages/sort/sort.wxml-->
+<view class="isLogin" wx:if="{{!isLogin}}">
+  <button type="primary" bindtap="gotoLogin" style="width: 300px;margin: 0 auto">请登录后使用搜索功能哦</button>
+</view>
+<view class="search_bar">
+  <view style="display: flex; flex-direction: row;justify-content: center;align-items: center;">
+    <image src="/resource/search_single.png"></image>
+    <input bindinput="inputChange" value="{{search_word}}" type="text" placeholder="请输入{{search_type}}关键字" />
+    <button bindtap="getSearchDataByButton">搜索</button>
+
+  </view>
+  <block wx:if="{{search_history.length > 0}}">
+    <view class="history">
+      <text>历史记录</text>
+      <view style="display: flex;flex-direction: row; flex-flow: wrap;">
+        <block wx:for="{{search_history}}">
+          <view class="history_text" data-text="{{item}}" bindtap="printHistory">{{item}}</view>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="header_tool">
+  <view class="home_tool">
+    <view class="tool" data-type="0" bindtap="getSearchData">
+      <image src="../../resource/poets.png" />
+      <text style="color: {{type === 0 ? 'pink' : 'black'}};">诗人</text>
+    </view>
+    <view class="tool" data-type="1" bindtap="getSearchData">
+      <image src="../../resource/poem.png" />
+      <text style="color: {{type === 1 ? 'pink' : 'black'}};">诗词</text>
+    </view>
+
+    <view class="tool" data-type="2" bindtap="getSearchData">
+      <image src="../../resource/poemList.png" />
+      <text style="color: {{type === 2 ? 'pink' : 'black'}};">诗集</text>
+    </view>
+
+    <view class="tool" data-type="3" bindtap="getSearchData">
+      <image src="../../resource/热门.png" />
+      <text style="color: {{type === 3 ? 'pink' : 'black'}};">名句</text>
+    </view>
+
+  </view>
+</view>
+<view id="sort" class="uni_content">
+  <view class="uni_content_title">
+    <image src="../../resource/search.png" />
+    <text>搜索结果</text>
+  </view>
+  <scroll-view>
+    <view class="none_data" wx:if="{{search_data.length === 0}}">搜索结果在这</view>
+    <block wx:if="{{search_data.length !== 0}}">
+      <view class="dynmic_content" wx:for="{{search_data}}" data-id="{{item.id}}" data-type="{{item.type}}" wx:key="index" bindtap="goToSearchResult">
+        <image src="{{item.images}}" wx:if="{{item.images !== null}}" mode="aspectFill" />
+        <view>
+          <text>{{item.data_title}}</text>
+          <text style="color: {{item.status === 3 ? 'red' : 'green'}}" wx:if="{{item.status}}">当前状态：{{item.status_text}}</text>
+          <text>{{item.data_text}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

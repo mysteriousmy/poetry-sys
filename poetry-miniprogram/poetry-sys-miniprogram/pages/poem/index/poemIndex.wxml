@@ -1,0 +1,75 @@
+<view class="home_tool" style="padding-top: 20px;">
+    <view class="tool" data-type="0" bindtap="setStatus">
+        <image src="/resource/poems.png" />
+        <text style="color: {{current === 0 ? 'red' : 'black'}}">内容</text>
+    </view>
+    <view data-type="1" class="tool" bindtap="setStatus">
+        <image src="/resource/anno.png" />
+        <text style="color: {{current === 1 ? 'red' : 'black'}}">注释</text>
+    </view>
+
+    <view data-type="2" class="tool" bindtap="setStatus">
+        <image src="/resource/comments.png" />
+        <text style="color: {{current === 2 ? 'red' : 'black'}}">翻译</text>
+    </view>
+    <view data-type="3" class="tool" bindtap="setStatus">
+        <image src="/resource/jie.png" />
+        <text style="color: {{current === 3 ? 'red' : 'black'}}">赏析</text>
+    </view>
+    <view data-type="4" class="tool" bindtap="setStatus">
+        <image src="/resource/back.png" />
+        <text style="color: {{current === 4 ? 'red' : 'black'}}">创作背景</text>
+    </view>
+</view>
+
+<view class="container_text">
+    <block wx:if="{{current === 0}}">
+        <text class="title">{{poem.poemTitle}}</text>
+        <text class="author">[{{poem.poets.dynasty.dynastyName}}] {{poem.poets.poetsName}}</text>
+        <view class="content">
+            <block wx:for="{{poem_list}}" wx:key="index">
+                <text>{{item}}</text>
+            </block>
+        </view>
+    </block>
+    <block wx:if="{{current === 1}}">
+        <text class="title">{{poem.poemTitle}}的注释</text>
+        <view class="content">
+            <block wx:for="{{poem_anno_list}}" wx:key="index">
+                <text class="long">{{item}}</text>
+            </block>
+        </view>
+    </block>
+    <block wx:if="{{current === 2}}">
+        <text class="title">{{poem.poemTitle}}的翻译</text>
+
+        <view class="content">
+            <block wx:for="{{poem_tran_list}}" wx:key="index">
+                <text class="long">{{item}}</text>
+            </block>
+        </view>
+    </block>
+    <block wx:if="{{current === 3}}">
+        <text class="title">{{poem.poemTitle}}的赏析</text>
+        <view class="content">
+            <block wx:for="{{poem_appre_list}}" wx:key="index">
+                <text class="long">{{item}}</text>
+            </block>
+
+        </view>
+    </block>
+    <block wx:if="{{current === 4}}">
+        <text class="title">{{poem.poemTitle}}的创作背景</text>
+        <view class="content">
+            <block wx:for="{{poem_crea_list}}" wx:key="index">
+                <text class="long">{{item}}</text>
+            </block>
+
+        </view>
+    </block>
+</view>
+
+<view style="margin-top: 40px;"></view>
+<button type="primary" wx:if="{{!isCollect && isLogin}}" bindtap="doCollect">收藏</button>
+<button type="warn" wx:if="{{isCollect && isLogin}}" bindtap="doCollect">取消收藏</button>
+<button type="primary" wx:if="{{!isLogin}}" bindtap="gotoLogin">登录后可以收藏哦</button>

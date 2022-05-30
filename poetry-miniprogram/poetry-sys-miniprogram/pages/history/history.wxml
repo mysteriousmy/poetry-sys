@@ -1,0 +1,44 @@
+<view class="home_dynmic" wx:if="{{history_list.poets.length > 0}}">
+    <view class="dynmic_title">
+        <image src="../../resource/focus.png" />
+        <text>诗人历史记录列表</text>
+    </view>
+    <block>
+        <view class="dynmic_content" wx:for="{{history_list.poets}}" data-id="{{item.poetsId}}" wx:key="index" bindtap="goToPoetsPage">
+            <image src="{{item.poetsPhoto}}" wx:if="{{item.poetsPhoto.length !== 0}}" mode="aspectFill" />
+            <view>
+                <text class="history_title">{{item.poetsName}}</text>
+                <text class="history_desc">{{item.poetsDesc}}</text>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="home_dynmic" wx:if="{{history_list.poems.length > 0}}">
+    <view class="dynmic_title">
+        <image src="../../resource/focus.png" />
+        <text>诗词历史记录列表</text>
+    </view>
+    <block>
+        <view class="poems" wx:for="{{history_list.poems}}" wx:key="index" data-id="{{item.poemId}}" bindtap="gotoPoemPage">
+            <view style="display: flex;flex-direction: row; justify-content: space-between;" > 
+                <text>{{item.poemTitle}}</text>
+                <text>[{{item.poets.dynasty.dynastyName}}] {{item.poets.poetsName}}</text>
+            </view>
+            <text class="poem_content">{{item.poemContent}}</text>
+        </view>
+    </block>
+</view>
+<view class="home_dynmic" wx:if="{{history_list.rheses.length > 0}}">
+    <view class="dynmic_title">
+        <image src="../../resource/focus.png" />
+        <text>名句历史记录列表</text>
+    </view>
+    <block>
+        <view class="dynmic_content" wx:for="{{history_list.rheses}}" data-id="{{item.rhesisId}}" wx:key="index" bindtap="goToRhesisPage">
+            <image src="{{item.rhesisBackground}}" wx:if="{{item.rhesisBackground.length !== 0}}" mode="aspectFill" />
+            <view>
+                <text class="history_title">{{item.rhesisContent}}</text>
+            </view>
+        </view>
+    </block>
+</view>

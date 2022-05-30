@@ -1,0 +1,23 @@
+<view class="load" wx:if="{{!loginOk}}">
+    <image src="../../resource/my.png" bindtap="load"></image>
+    <text class="clickload" bindtap="load">点击登录</text>
+</view>
+<!--已登录-->
+
+    <view class="load" wx:else="load">
+        <view>
+            <image style="position: absolute;width: 20px; height: 20px;" src="{{gender === 0 ? '/resource/man.png' : '/resource/women.png'}}" />
+            <image src="{{avatarUrl}}"></image>
+        </view>
+        
+        <text class="clickload">{{nickName}}</text>
+    </view>
+
+<view class="list_card">
+    <button class="btn" style="width: 100%;" wx:if="{{loginOk}}" hover-class="btn-hover" data-type="0" bindtap="toCollectPage">诗词收藏</button>
+    <button class="btn" style="width: 100%;" wx:if="{{loginOk}}" hover-class="btn-hover" data-type="1" bindtap="toCollectPage">名句收藏</button>
+    <button class="btn" style="width: 100%;" wx:if="{{loginOk}}" hover-class="btn-hover" bindtap="toLearnPage">每日学诗</button>
+    <button class="btn" style="width: 100%;" wx:if="{{loginOk}}" hover-class="btn-hover" bindtap="toHistoryPage">历史记录</button>
+    <button class="btn" style="width: 100%;" hover-class="btn-hover" bindtap="about">关于</button>
+    <button class="btn" style="width: 100%;" hover-class="btn-hover" wx:if="{{loginOk}}" bindtap="exit">退出登录</button>
+</view>

@@ -1,0 +1,23 @@
+<view class="home_dynmic">
+    <view class="dynmic_title">
+      <image src="../../resource/focus.png" />
+      <text>收藏列表</text>
+    </view>
+    <view class="none_data" wx:if="{{collect_list.length === 0}}">暂无数据</view>
+    <block wx:if="{{collect_list.length > 0}}">
+      <view wx:if="{{type === '1'}}" class="dynmic_content" wx:for="{{collect_list}}" data-id="{{item.id}}" wx:key="index" bindtap="goToDetailPage">
+        <image src="{{item.collect_url}}" wx:if="{{item.collect_url.length !== 0}}" mode="aspectFill" />
+        <view>
+          <text class="collect_title">{{item.collect_title}}</text>
+          <text class="collect_desc">{{item.collect_desc}}</text>
+        </view>
+      </view>
+      <view wx:if="{{type === '0'}}" class="poems" wx:for="{{collect_list}}" data-id="{{item.poemId}}" wx:key="index" bindtap="goToDetailPage">
+        <view style="display: flex;flex-direction: row; justify-content: space-between;" > 
+                <text>{{item.poemTitle}}</text>
+                <text>[{{item.poets.dynasty.dynastyName}}] {{item.poets.poetsName}}</text>
+            </view>
+        <text class="poem_content">{{item.poemContent}}</text>
+      </view>
+    </block>
+  </view>

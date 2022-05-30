@@ -1,0 +1,37 @@
+<scroll-view scroll-x class="home_tool" style="padding-top: 20px;">
+    <view style="background: black" class="tool" data-type="0" bindtap="changeType" data-type="4">
+            <text>全部</text>
+    </view>
+    <block wx:for="{{poem_type}}" wx:key="index">
+        <view style="background: {{item.color}}; {{index === poem_type.length-1 ? 'margin-right: 20px' : ''}}" class="tool" data-type="{{item.type_id}}" bindtap="changeType" data-name="{{item.type_name}}">
+            <text>{{item.type_name}}</text>
+        </view>
+    </block>
+</scroll-view>
+<scroll-view scroll-x class="home_tool" style="padding-top: 20px;">
+    <view style="background: black" class="tool" data-type="0" bindtap="changeDynasty" data-id="-1">
+            <text>全部</text>
+    </view>
+    <block wx:for="{{poem_dynasty}}" wx:key="index">
+        <view style="background: {{item.color}}; {{index === poem_dynasty.length-1 ? 'margin-right: 20px' : ''}}" class="tool" bindtap="changeDynasty" data-id="{{item.id}}" data-name="{{item.dynasty_name}}">
+            <text>{{item.dynasty_name}}</text>
+        </view>
+    </block>
+</scroll-view>
+
+<view class="uni_content">
+    <view class="uni_content_title">
+      <image src="/resource/search.png" />
+      <text style="color: rgba(0,0,0,0.7);">{{current_dynasty}} / {{current_type}} / 总共{{poem_list.length}}首</text>
+    </view>
+    <view class="none_data" wx:if="{{poem_list.length === 0}}">暂无数据</view>
+    <block wx:if="{{poem_list.length !== 0}}">
+        <view class="poems" wx:for="{{poem_list}}" wx:key="index" data-id="{{item.poemId}}" bindtap="toDetailPage">
+            <view style="display: flex;flex-direction: row; justify-content: space-between;" > 
+                <text>{{item.poemTitle}}</text>
+                <text>[{{item.poets.dynasty.dynastyName}}] {{item.poets.poetsName}}</text>
+            </view>
+            <text class="poem_content">{{item.poemContent}}</text>
+        </view>
+    </block>
+</view>

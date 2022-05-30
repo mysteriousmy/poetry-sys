@@ -1,0 +1,21 @@
+archivesBaseName = 'poetry-admin'
+jar.enabled = true
+bootJar.enabled = true
+
+group 'com.poetry'
+version '0.0.1-SNAPSHOT'
+dependencies {
+    implementation project(':poetry-common')
+    implementation project(':poetry-db')
+    implementation project(':poetry-miniprogram')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+    implementation group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.2.Final'
+
+
+}
+test {
+    useJUnitPlatform()
+}
